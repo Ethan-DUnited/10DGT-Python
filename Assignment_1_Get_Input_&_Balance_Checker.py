@@ -1,6 +1,6 @@
 # Assignment 1 - Fence Cost Calculator
 # Author: Ethan du Toit
-# Version: V1
+# Version: V2
 
 print() 
 # Greet the user
@@ -12,28 +12,35 @@ print("Please enter your width, length & cost per metre values of your fence int
 print()
 
 
-while True:
-    error = "Please enter a number that is more than zero"
+def error_checker(question):
     done = False
-
-    try: 
-        while not done:
-            width = float(input("Width: "))
-            length = float(input("Length: "))
-            costpm = float(input("Cost per metre: "))
-
-            if width > 0:
+    error = "Please enter a valid number (must be more than zero)"
+    while not done:
+        print(question)
+        try:
+            num = float(input())
+            if num > 0:
                 done = True
-            elif length > 0:
-                done = True
-            elif costpm > 0:
-                done = True
-
             else:
                 print(error)
-                
+        except ValueError:
+            print(error)
+    return(num)
 
-    except ValueError:
-        print(error)
-        continue
 
+# Main routine:
+width = error_checker("Please enter your WIDTH value: ")
+print()
+print(f"⚪️ The width you entered is {width}.")
+
+print()
+
+length = error_checker("Please enter your LENGTH value: ")
+print()
+print(f"⚪️ The width you entered is {length}.")
+
+print()
+
+costpm = error_checker("Please enter your COST PER METRE value: ")
+print()
+print(f"⚪️ The width you entered is {costpm}.")
